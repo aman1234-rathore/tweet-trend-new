@@ -1,18 +1,13 @@
-pipeline{
-    agent {
-        node{
-            label 'maven'
-        }
+
+pipeline {
+    agent any
+    tools {
+        jdk 'JDK17' // Make sure you have JDK17 configured in Jenkins Global Tools
     }
-    
-    stages{
-        stage('Clone code on slave system'){
-            steps{
-                git url: 'https://github.com/aman1234-rathore/tweet-trend-new.git', branch: 'main'
-            }
-        }
-        stage('build'){
-            steps{
+    stages {
+        stage('Build') {
+            steps {
+                sh 'java -version'
                 sh 'mvn clean deploy'
             }
         }
