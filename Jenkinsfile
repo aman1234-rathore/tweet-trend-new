@@ -1,37 +1,21 @@
 pipeline {
-    agent any
-
-    environment {
-        JAVA_HOME = "/usr/lib/jvm/java-17-openjdk-amd64"
-        PATH = "${JAVA_HOME}/bin:${env.PATH}"
+    agent {
+        docker {
+            image 'maven:3.9.6-eclipse-temurin-17'
+            args '-v /root/.m2:/root/.m2' // cache Maven dependencies
+        }
     }
-
     stages {
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/aman1234-rathore/tweet-trend-new.git'
             }
         }
-
-        stage('Install Java 17') {
-            steps {
-                sh '''
-                    echo "Installing Java 17 if not already present..."
-                    if ! java -version 2>&1 | grep -q "17."; then
-                        sudo apt-get update -y
-                        sudo apt-get install -y openjdk-17-jdk
-                    fi
-                    java -version
-                '''
-            }
-        }
-
         stage('Build & Test') {
             steps {
                 sh 'mvn clean test'
             }
         }
-
         stage('Deploy') {
             steps {
                 sh 'mvn deploy'
