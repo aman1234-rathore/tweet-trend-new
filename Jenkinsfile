@@ -17,7 +17,7 @@ pipeline {
             steps {
                 sh '''
                     echo "Installing Java 17 if not already present..."
-                    if ! java -version 2>&1 | grep -q "17."); then
+                    if ! java -version 2>&1 | grep -q "17."; then
                         sudo apt-get update -y
                         sudo apt-get install -y openjdk-17-jdk
                     fi
@@ -26,15 +26,9 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Build & Test') {
             steps {
-                sh 'mvn clean package'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                sh 'mvn test'
+                sh 'mvn clean test'
             }
         }
 
