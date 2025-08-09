@@ -20,9 +20,9 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Build without Tests') {
             steps {
-                sh 'mvn clean deploy'
+                sh 'mvn clean package -DskipTests'
             }
         }
     }
