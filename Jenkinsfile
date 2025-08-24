@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        node{
+            label 'maven'
+        }
+    }
 
     environment {
         PATH = "/opt/apache-maven-3.9.11/bin:$PATH"
@@ -10,8 +14,10 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'mvn -version'
+                sh 'mvn clen deploy'
                 // Add your build steps here
             }
         }
     }
 }
+
