@@ -1,12 +1,10 @@
 pipeline {
     agent {
-        docker {
-            image 'maven:3.9.6-eclipse-temurin-17'
-            args '-v /root/.m2:/root/.m2' // cache Maven dependencies
-        }
+        node{
+            label 'maven'
     }
     stages {
-        stage('Checkout') {
+        stage('Cloning repo') {
             steps {
                 git branch: 'main', url: 'https://github.com/aman1234-rathore/tweet-trend-new.git'
             }
@@ -23,3 +21,4 @@ pipeline {
         }
     }
 }
+
