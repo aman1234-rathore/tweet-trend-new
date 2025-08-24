@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        PATH = "/opt/apache-maven-3.9.11/bin:$PATH"
+        PATH = "/opt/maven/bin:$PATH"
         // Or safer: PATH+MAVEN = "/opt/apache-maven-3.9.11/bin"
     }
 
@@ -21,6 +21,7 @@ pipeline {
         }
     }
 }
+
 
 
 
