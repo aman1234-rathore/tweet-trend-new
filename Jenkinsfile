@@ -14,10 +14,11 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'mvn -version'
-                sh 'mvn clen deploy'
+                sh 'mvn clean deploy'
                 // Add your build steps here
             }
         }
     }
 }
+
 
