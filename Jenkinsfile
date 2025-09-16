@@ -1,30 +1,32 @@
 pipeline {
     agent {
-        node{
+        node {
             label 'maven'
         }
     }
-    
+
     environment {
         PATH = "/opt/apache-maven-3.9.11/bin:$PATH"
-        // Or safer: PATH+MAVEN = "/opt/apache-maven-3.9.11/bin"
+        // Alternatively: PATH+MAVEN = "/opt/apache-maven-3.9.11/bin"
     }
 
     stages {
         stage('Build') {
             steps {
-               
                 sh 'mvn -version'
                 sh 'mvn clean deploy'
-                // Add your build steps here
+            }
+        }
+
+        stage('SonarQube analysis') {
+            environment {
+                scannerHome = tool 'valaxy-sonar-scanner'
+            }
+            steps {
+                withSonarQubeEnv('valaxy-sonarqube-server') {
+                    sh "${scannerHome}/bin/sonar-scanner"
+                }
             }
         }
     }
 }
-
-
-
-
-
-
-
