@@ -10,7 +10,6 @@ pipeline {
         // Or safer: PATH+MAVEN = "/opt/apache-maven-3.9.11/bin"
     }
 
-
     stages {
         stage('Build') {
             steps {
@@ -22,6 +21,7 @@ pipeline {
         }
     }
 }
+
 
 
 
