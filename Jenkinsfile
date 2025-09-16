@@ -1,14 +1,5 @@
 pipeline {
-    agent {
-        node {
-            label 'maven'
-        }
-    }
-
-    environment {
-        PATH = "/opt/apache-maven-3.9.11/bin:$PATH"
-        // Alternatively: PATH+MAVEN = "/opt/apache-maven-3.9.11/bin"
-    }
+     agent any
 
     stages {
         stage('Build') {
@@ -30,3 +21,4 @@ pipeline {
         }
     }
 }
+
