@@ -25,14 +25,16 @@
 
     <dependencies>
 
+        <!-- Spring Boot Core -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
+        <!-- Spring Boot Web Starter (FIXED) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-           boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <!-- GitHub API -->
@@ -42,7 +44,7 @@
             <version>1.99</version>
         </dependency>
 
-        <!-- FIXED: Twitter4J correct version tag -->
+        <!-- Twitter4J (FIXED) -->
         <dependency>
             <groupId>org.twitter4j</groupId>
             <artifactId>twitter4j-core</artifactId>
@@ -57,7 +59,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Spring Boot Test -->
+        <!-- Spring Boot test utilities -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -76,12 +78,13 @@
     <build>
         <plugins>
 
+            <!-- Boot plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-            <!-- Compiler plugin (Java 11) -->
+            <!-- Compiler Java 11 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -91,7 +94,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Surefire plugin (Java 11 compatible) -->
+            <!-- Surefire for Java 11 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -101,7 +104,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Jacoco plugin (Java 11 safe version) -->
+            <!-- Jacoco for Java 11 -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -112,7 +115,6 @@
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
-
                     <execution>
                         <id>report</id>
                         <phase>test</phase>
@@ -120,7 +122,6 @@
                             <goal>report</goal>
                         </goals>
                     </execution>
-
                 </executions>
             </plugin>
 
