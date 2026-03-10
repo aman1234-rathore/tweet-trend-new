@@ -1,6 +1,6 @@
 sonar.verbose=true
-sonar.organization=aman1234-rathore-key
-sonar.projectKey=aman1234-rathore_tweet-trend-new
+sonar.organization=aman1234-rathore
+sonar.projectKey=aman1234-rathore-key
 sonar.projectName=tweet-trend-new
 sonar.language=java
 sonar.sourceEncoding=UTF-8
@@ -8,4 +8,5 @@ sonar.source=.
 sonar.java.binaries=target/classes
 
 sonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+
 
