@@ -9,7 +9,6 @@ pipeline {
                 sh 'mvn clean deploy'
             }
         }
-
          
         stage('SonarQube analysis') {
             environment {
@@ -23,6 +22,7 @@ pipeline {
         }
     }
 }
+
 
 
 
